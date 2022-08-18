@@ -1,6 +1,6 @@
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import DragDrop from "../components/Learning";
+import DragDrop from "../components/Form";
 
 const Home = () => {
   return (
