@@ -1,3 +1,7 @@
+`this.form-js` is the planned javascript migration of [`this.form-ts`](https://github.com/jarp0l/this.form-ts). This repo does not contain a landing page like the ts version, however it contains a minimal functional code for dnd form. Other incomplete features contain: authentication, authorization, REST API implementation.
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
