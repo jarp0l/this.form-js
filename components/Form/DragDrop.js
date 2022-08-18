@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Item from "./Item";
 import { useDrop } from "react-dnd";
-// import "../App.css";
+// import { Button, Paragraph, ShortText } from "../FormBlocks";
 
 const ItemList = [
   {
@@ -25,9 +25,9 @@ const ItemList = [
 ];
 
 function DragDrop() {
-  const [form, setForm] = useState([]);
+  const [formState, setFormState] = useState([]);
 
-  const [{ isOver }, drop] = useDrop(() => ({
+  const [{ isOver, isActive }, drop] = useDrop(() => ({
     accept: "text",
     drop: (item) => addItemToForm(item.id),
     collect: (monitor) => ({
@@ -38,7 +38,11 @@ function DragDrop() {
   const addItemToForm = (id) => {
     const itemList = ItemList.filter((item) => id === item.id);
 
-    setForm((form) => [...form, itemList[0]]);
+    setFormState((formState) => [...formState, itemList[0]]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -47,7 +51,7 @@ function DragDrop() {
         {ItemList.map((item) => {
           return (
             <Item
-              key={item.id}
+              key={Math.random()}
               id={item.id}
               name={item.name}
               description={item.description}
@@ -61,19 +65,19 @@ function DragDrop() {
         ref={drop}
         style={{ border: isOver ? "5px solid red" : "3px dotted pink" }}
       >
-        <form method="POST" action="/">
-          {form.map((item) => {
-            return <Item key={item.id} name={item.name} id={item.id} />;
-          })}
+        <div className="container">
+          <form method="POST" onSubmit={handleSubmit}>
+            {formState.map((item) => {
+              return <Item key={Math.random()} name={item.name} id={item.id} />;
+            })}
 
-          <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-              <button class="button is-success">
-                Submit
-              </button>
+            <div className="field is-grouped is-grouped-centered">
+              <div className="control">
+                <button className="button is-success">Submit</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

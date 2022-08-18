@@ -1,1 +1,2 @@
-import FormApp from './FormApp'
+import DragDrop from "./DragDrop";
+export default DragDrop;
